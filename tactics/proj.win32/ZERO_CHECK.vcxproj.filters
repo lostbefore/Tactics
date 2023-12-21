@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\xuexi\fanshi\qimo\Tactics\tactics\proj.win32\CMakeFiles\eb068c71887fa6f728a986824cade195\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{5B25E0F6-C455-32CF-8BAD-6C1ADA3698C7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
