@@ -1,0 +1,976 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|Win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|Win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{571CA38F-B782-3E0F-9166-52621C48F6E3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <Platform>Win32</Platform>
+    <ProjectName>MyWarMap</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\bin\MyWarMap\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MyWarMap.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MyWarMap</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\bin\MyWarMap\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MyWarMap.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">MyWarMap</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\bin\MyWarMap\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">MyWarMap.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">MyWarMap</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\bin\MyWarMap\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">MyWarMap.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">MyWarMap</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/Box2D/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/chipmunk/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/freetype2/include/win32/freetype2" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/bullet/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/bullet/include/bullet" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/jpeg/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/uv/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/webp/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/websockets/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/curl/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/png/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/gles/include/OGLES" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/icon/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/MP3Decoder/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OpenalSoft/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/glfw3/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/zlib/../win32-specific/zlib/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;COCOS2D_DEBUG=1;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;COCOS2D_DEBUG=1;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\include\win32\freetype2;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include\bullet;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\include\OGLES;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\include\win32\freetype2;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include\bullet;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\include\OGLES;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>												</Message>
+      <Command>setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/uv/prebuilt/win32/uv.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Debug\cocos2d.lib;lib\Debug\external.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\prebuilt\win32\debug\libbox2d.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\prebuilt\win32\debug-lib\libchipmunk.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\Debug\ext_recast.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\prebuilt\win32\debug\libbullet.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\prebuilt\win32\libwebp.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\prebuilt\win32\websockets.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\prebuilt\win32\libssl.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\Debug\ext_tinyxml2.lib;lib\Debug\ext_xxhash.lib;lib\Debug\ext_xxtea.lib;lib\Debug\ext_clipper.lib;lib\Debug\ext_edtaa3func.lib;lib\Debug\ext_convertUTF.lib;lib\Debug\ext_poly2tri.lib;lib\Debug\ext_md5.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\prebuilt\win32\libcurl.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\prebuilt\win32\libpng.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\Debug\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/Debug/MyWarMap.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Debug/MyWarMap.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/Box2D/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/chipmunk/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/freetype2/include/win32/freetype2" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/bullet/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/bullet/include/bullet" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/jpeg/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/uv/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/webp/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/websockets/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/curl/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/png/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/gles/include/OGLES" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/icon/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/MP3Decoder/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OpenalSoft/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/glfw3/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/zlib/../win32-specific/zlib/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\include\win32\freetype2;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include\bullet;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\include\OGLES;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\include\win32\freetype2;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include\bullet;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\include\OGLES;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>												</Message>
+      <Command>setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/uv/prebuilt/win32/uv.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\Release\cocos2d.lib;lib\Release\external.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\prebuilt\win32\release\libbox2d.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\prebuilt\win32\release-lib\libchipmunk.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\Release\ext_recast.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\prebuilt\win32\release\libbullet.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\prebuilt\win32\libwebp.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\prebuilt\win32\websockets.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\prebuilt\win32\libssl.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\Release\ext_tinyxml2.lib;lib\Release\ext_xxhash.lib;lib\Release\ext_xxtea.lib;lib\Release\ext_clipper.lib;lib\Release\ext_edtaa3func.lib;lib\Release\ext_convertUTF.lib;lib\Release\ext_poly2tri.lib;lib\Release\ext_md5.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\prebuilt\win32\libcurl.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\prebuilt\win32\libpng.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\Release\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/Release/MyWarMap.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/Release/MyWarMap.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/Box2D/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/chipmunk/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/freetype2/include/win32/freetype2" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/bullet/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/bullet/include/bullet" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/jpeg/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/uv/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/webp/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/websockets/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/curl/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/png/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/gles/include/OGLES" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/icon/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/MP3Decoder/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OpenalSoft/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/glfw3/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/zlib/../win32-specific/zlib/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\include\win32\freetype2;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include\bullet;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\include\OGLES;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\include\win32\freetype2;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include\bullet;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\include\OGLES;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>												</Message>
+      <Command>setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/uv/prebuilt/win32/uv.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\MinSizeRel\cocos2d.lib;lib\MinSizeRel\external.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\prebuilt\win32\release\libbox2d.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\prebuilt\win32\release-lib\libchipmunk.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\MinSizeRel\ext_recast.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\prebuilt\win32\release\libbullet.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\prebuilt\win32\libwebp.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\prebuilt\win32\websockets.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\prebuilt\win32\libssl.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\MinSizeRel\ext_tinyxml2.lib;lib\MinSizeRel\ext_xxhash.lib;lib\MinSizeRel\ext_xxtea.lib;lib\MinSizeRel\ext_clipper.lib;lib\MinSizeRel\ext_edtaa3func.lib;lib\MinSizeRel\ext_convertUTF.lib;lib\MinSizeRel\ext_poly2tri.lib;lib\MinSizeRel\ext_md5.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\prebuilt\win32\libcurl.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\prebuilt\win32\libpng.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\MinSizeRel\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/MinSizeRel/MyWarMap.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/MinSizeRel/MyWarMap.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/Box2D/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/chipmunk/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/freetype2/include/win32/freetype2" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/bullet/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/bullet/include/bullet" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/jpeg/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/uv/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/webp/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/websockets/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/curl/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/png/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/gles/include/OGLES" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/icon/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/MP3Decoder/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OpenalSoft/include" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/glfw3/include/win32" /external:I "D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/zlib/../win32-specific/zlib/include"</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_WIN32;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;CC_STATIC;LWS_WITH_LIBUV;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\include\win32\freetype2;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include\bullet;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\include\OGLES;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\audio\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\extensions;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\editor-support;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\base;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\platform\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\recast\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\tinyxml2\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxhash\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\xxtea\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\clipper\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\edtaa3func\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\poly2tri\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\md5\..;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\unzip\.;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\include\win32\freetype2;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\include\bullet;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\include\OGLES;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\include;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\include\win32;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>												</Message>
+      <Command>setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/prebuilt/win32/libssl-1_1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/libssl-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/openssl/prebuilt/win32/libcrypto-1_1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/libcrypto-1_1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/uv/prebuilt/win32/uv.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/uv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/websockets/prebuilt/win32/websockets.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/websockets.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/curl/prebuilt/win32/libcurl.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/libcurl.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/gles/prebuilt/glew32.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/glew32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/icon/prebuilt/iconv.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/iconv.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/MP3Decoder/prebuilt/libmpg123.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/libmpg123.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libogg.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/libogg.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbis.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/libvorbis.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OggDecoder/prebuilt/libvorbisfile.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/libvorbisfile.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/win32-specific/OpenalSoft/prebuilt/OpenAL32.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/OpenAL32.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+D:\cmake\bin\cmake.exe -E copy_if_different D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/cocos2d/external/zlib/../win32-specific/zlib/prebuilt/zlib1.dll D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/zlib1.dll
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>lib\RelWithDebInfo\cocos2d.lib;lib\RelWithDebInfo\external.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\Box2D\prebuilt\win32\release\libbox2d.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\chipmunk\prebuilt\win32\release-lib\libchipmunk.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\freetype2\prebuilt\win32\freetype.lib;lib\RelWithDebInfo\ext_recast.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\bullet\prebuilt\win32\release\libbullet.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\jpeg\prebuilt\win32\libjpeg.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\webp\prebuilt\win32\libwebp.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\websockets\prebuilt\win32\websockets.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\prebuilt\win32\libssl.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\openssl\prebuilt\win32\libcrypto.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\uv\prebuilt\win32\uv_a.lib;lib\RelWithDebInfo\ext_tinyxml2.lib;lib\RelWithDebInfo\ext_xxhash.lib;lib\RelWithDebInfo\ext_xxtea.lib;lib\RelWithDebInfo\ext_clipper.lib;lib\RelWithDebInfo\ext_edtaa3func.lib;lib\RelWithDebInfo\ext_convertUTF.lib;lib\RelWithDebInfo\ext_poly2tri.lib;lib\RelWithDebInfo\ext_md5.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\curl\prebuilt\win32\libcurl.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\png\prebuilt\win32\libpng.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\gles\prebuilt\glew32.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\icon\prebuilt\libiconv.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\MP3Decoder\prebuilt\libmpg123.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libogg.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbis.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OggDecoder\prebuilt\libvorbisfile.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\win32-specific\OpenalSoft\prebuilt\OpenAL32.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\glfw3\prebuilt\win32\glfw3.lib;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\zlib\..\win32-specific\zlib\prebuilt\libzlib.lib;lib\RelWithDebInfo\ext_unzip.lib;ws2_32.lib;userenv.lib;psapi.lib;winmm.lib;Version.lib;Iphlpapi.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/RelWithDebInfo/MyWarMap.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/bin/MyWarMap/RelWithDebInfo/MyWarMap.pdb</ProgramDataBaseFile>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
+D:\cmake\bin\cmake.exe -SD:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap -BD:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32 --check-stamp-file D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\cmake\share\cmake-3.28\Modules\CMakeCInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeParseArguments.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeCCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeCXXCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeRCCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
+D:\cmake\bin\cmake.exe -SD:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap -BD:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32 --check-stamp-file D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\cmake\share\cmake-3.28\Modules\CMakeCInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeParseArguments.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeCCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeCXXCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeRCCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
+D:\cmake\bin\cmake.exe -SD:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap -BD:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32 --check-stamp-file D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\cmake\share\cmake-3.28\Modules\CMakeCInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeParseArguments.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeCCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeCXXCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeRCCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
+D:\cmake\bin\cmake.exe -SD:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap -BD:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32 --check-stamp-file D:/cocos2d-x4.0/cocos2d-x-4.0/cocos2d-x-4.0/cocos2dx-4.0-project/MyWarMap/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\cmake\share\cmake-3.28\Modules\CMakeCInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeCXXInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeCommonLanguageInclude.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeGenericSystem.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeInitializeConfigs.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeLanguageInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeParseArguments.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeRCInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeSystemSpecificInformation.cmake;D:\cmake\share\cmake-3.28\Modules\CMakeSystemSpecificInitialize.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\CMakeCommonCompilerMacros.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC-C.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC-CXX.cmake;D:\cmake\share\cmake-3.28\Modules\Compiler\MSVC.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-Initialize.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC-C.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC-CXX.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows-MSVC.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\Windows.cmake;D:\cmake\share\cmake-3.28\Modules\Platform\WindowsPaths.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosBuildHelpers.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosBuildSet.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosConfigDefine.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cmake\Modules\CocosConfigDepend.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeCCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeCXXCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeRCCompiler.cmake;D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\3.28.1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\AppDelegate.h" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\HelloWorldScene.h" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\WarMap.h" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\ShopScene.h" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\main.h" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\resource.h" />
+    <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\AppDelegate.cpp" />
+    <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\WarMap.cpp" />
+    <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\ShopScene.cpp" />
+    <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\main.cpp" />
+    <ResourceCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\game.rc" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\001.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\002.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\003.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\004.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\005.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\006.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\007.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\008.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\009.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\010.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\011.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\012.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\013.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\014.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\015.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\016.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\017.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\018.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\019.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\020.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\021.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\022.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\023.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\024.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\025.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\026.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\027.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\028.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\029.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\030.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\031.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\032.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\033.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\034.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\035.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\036.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\037.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\038.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\039.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\040.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\041.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\042.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\043.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\044.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\045.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\CloseNormal.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\CloseSelected.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\HelloWorld.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\Maps\WarMap.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\Maps\WarMap.tmx" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\Maps\WarMap.tsx" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\Store\shop.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\Store\shopped.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\Store\store.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\fonts\Marker Felt.ttf" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\fonts\arial.ttf" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\hero1.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\hero2.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\res\.gitkeep" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\01.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\01CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\02.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\02CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\03.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\03CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\04.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\04CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\05.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\05CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\06.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\06CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\07.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\07CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\08.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\08CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\09.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\09CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\10.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\10CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\11.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\11CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\12.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\12CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\13.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\13CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\14.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\14CanNotBought.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\15.png" />
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\15CanNotBought.png" />
+    <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\cocos\precheader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\ZERO_CHECK.vcxproj">
+      <Project>{23FE335D-8E5E-3AB8-A9AA-566A523B3D9A}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\SYNC_RESOURCE-MyWarMap.vcxproj">
+      <Project>{6D064B48-EDC2-347B-8748-254101421848}</Project>
+      <Name>SYNC_RESOURCE-MyWarMap</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\cocos\core\cocos2d.vcxproj">
+      <Project>{F0D325DF-629C-3A55-ACFF-2672FC2D5D0F}</Project>
+      <Name>cocos2d</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\external\clipper\ext_clipper.vcxproj">
+      <Project>{3D1808A4-319B-3CDF-B765-BB19A488BF7D}</Project>
+      <Name>ext_clipper</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\external\ConvertUTF\ext_convertUTF.vcxproj">
+      <Project>{F43F31E5-50CD-3937-862D-6CC9E8EDD77A}</Project>
+      <Name>ext_convertUTF</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\external\edtaa3func\ext_edtaa3func.vcxproj">
+      <Project>{AF90E60B-EF67-3EB7-9BE7-027E8D90744D}</Project>
+      <Name>ext_edtaa3func</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\external\md5\ext_md5.vcxproj">
+      <Project>{E5033FBB-DD73-3963-AA4E-50A5ABA09374}</Project>
+      <Name>ext_md5</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\external\poly2tri\ext_poly2tri.vcxproj">
+      <Project>{6B63C5CB-0718-3683-AC58-D4DA0EC06E9D}</Project>
+      <Name>ext_poly2tri</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\external\recast\ext_recast.vcxproj">
+      <Project>{3FE94BAE-B109-3817-A449-80F204FFEB53}</Project>
+      <Name>ext_recast</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\external\tinyxml2\ext_tinyxml2.vcxproj">
+      <Project>{A86613A0-5804-3610-8DE2-2C5E417F5E24}</Project>
+      <Name>ext_tinyxml2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\external\unzip\ext_unzip.vcxproj">
+      <Project>{91ABE5C8-BCBE-35B3-84A0-C2A4E9A845A8}</Project>
+      <Name>ext_unzip</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\external\xxhash\ext_xxhash.vcxproj">
+      <Project>{5580C577-DB35-3889-8214-CA6AE5B1486E}</Project>
+      <Name>ext_xxhash</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\external\xxtea\ext_xxtea.vcxproj">
+      <Project>{105054A7-CC01-3E56-99D1-EAB6CCD792BC}</Project>
+      <Name>ext_xxtea</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\engine\external\external.vcxproj">
+      <Project>{FE4D2597-2A3A-3A0F-BBD1-3F9A664C7DA6}</Project>
+      <Name>external</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

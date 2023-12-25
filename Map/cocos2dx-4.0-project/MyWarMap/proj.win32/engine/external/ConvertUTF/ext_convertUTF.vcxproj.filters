@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\ConvertUTF.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\ConvertUTFWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\cocos2d\external\ConvertUTF\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{42DB98AE-EAA1-33E2-BE47-351E910AA903}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
