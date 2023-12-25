@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\cocos2d-x-4.0\Demo\proj.win32\CMakeFiles\a94b5ecc591bd07f0c6d08008bf05843\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{883662D9-82F4-3735-B020-142B08174C3F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
