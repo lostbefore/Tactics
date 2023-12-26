@@ -149,8 +149,8 @@ public:
         auto singlegameScene = WarMap::createWarMap();
         cocos2d::Director::getInstance()->replaceScene(TransitionFade::create(0.5, singlegameScene, Color3B(0, 255, 255)));
 
-        Scene* BattleScene = AutoBattle::createAutoBattle();
-        cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, BattleScene, Color3B(0, 255, 255)));
+       // Scene* BattleScene = AutoBattle::createAutoBattle();
+        //cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, BattleScene, Color3B(0, 255, 255)));
         
         //
         // ╧ь╠усно╥
