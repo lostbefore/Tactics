@@ -8,9 +8,13 @@ USING_NS_CC;
 #define HERO_MAX 10
 #define ATTACK_DIS 1.414*64
 #define MAX_DISTANCE 1e9
-extern int fightHerosMap[6][3];
-extern int enemyHerosMap[6][3];
-int win = -1;
+extern int fightHerosMap[6][3];//己方数据
+extern int enemyHerosMap[6][3];//敌方数据
+int win = -1;//0为己方失败，1为己方胜利
+//调用方法：
+//Scene* BattleScene = AutoBattle::createAutoBattle();
+//cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, BattleScene, Color3B(0, 255, 255)));
+//战斗结束会自动回退到上一个场景，不需要修改
 Scene* AutoBattle::createAutoBattle()
 {
     return AutoBattle::create();
@@ -58,11 +62,11 @@ bool AutoBattle::init()
 
     //---------------------------------测试
 
-    for (int i = 0; i < 6; i++)
-        for (int j = 0; j < 3; j++)
-            fightHerosMap[i][j] = enemyHerosMap[i][j] = 0;
-    AIenemy(3, fightHerosMap);
-    AIenemy(3, enemyHerosMap);
+    //for (int i = 0; i < 6; i++)
+  //      for (int j = 0; j < 3; j++)
+   //         fightHerosMap[i][j] = enemyHerosMap[i][j] = 0;
+   // AIenemy(3, fightHerosMap);
+   // AIenemy(3, enemyHerosMap);
     //---------------------------------
 
     for (int i = 0; i < 6; i++) {
@@ -177,7 +181,6 @@ void AutoBattle::Attack(list<Champion*>& myList, list<Champion*>& enemyList) {
             }
         }
         enemyPos = (*aimIt)->getPosition();
-        //bool attackdistance = myHero->AttackDistance;
         if (nowDis <= ATTACK_DIS||myHero->AttackDistance==0) {
             if (myHero->canAttack()) {
                 (*aimIt)->GetDamage(myHero->AttackDamage());
