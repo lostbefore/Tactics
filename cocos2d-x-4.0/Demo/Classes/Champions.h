@@ -47,27 +47,8 @@ public:
 	void startAttackTimer();
 	// 判断是否可以攻击
 	bool canAttack();
+	// 动画控制方法
+	void playMeleeAttackAnimation();
+	void playRangedAttackAnimation(const Vec2& attackerPos, const Vec2& targetPos);
+	void playHitAnimation();
 };
-Champion::~Champion() 
-{
-	// 实现可能需要的清理工作
-}
-Champion::Champion() : attackTimer(0.0f), attackInterval(1.0f) {}
-// 开始计时器
-void Champion::startAttackTimer()
-{
-	attackTimer = 0.0f;  // 重置计时器
-}
-// 判断是否可以攻击
-bool Champion::canAttack()
-{
-	attackTimer += Director::getInstance()->getDeltaTime();  // 更新计时器
-
-	if (attackTimer >= attackInterval)
-	{
-		attackTimer = 0.0f;  // 重置计时器
-		return true;  // 可以攻击
-	}
-
-	return false;  // 未达到攻击间隔，不能攻击
-}

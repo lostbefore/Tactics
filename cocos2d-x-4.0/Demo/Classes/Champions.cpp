@@ -14,7 +14,88 @@ void Champion::setPosition(Vec2 vec2)
 	ManaBar->setPosition(Vec2(vec2.x, vec2.y + 1));
 	HealthBar->setPosition(Vec2(vec2.x, vec2.y + 3));
 }
+Champion::~Champion()
+{
+	// 实现可能需要的清理工作
+}
+Champion::Champion() : attackTimer(0.0f), attackInterval(1.0f) {}
+// 开始计时器
+void Champion::startAttackTimer()
+{
+	attackTimer = 0.0f;  // 重置计时器
+}
+// 判断是否可以攻击
+bool Champion::canAttack()
+{
+	attackTimer += Director::getInstance()->getDeltaTime();  // 更新计时器
 
+	if (attackTimer >= attackInterval)
+	{
+		attackTimer = 0.0f;  // 重置计时器
+		return true;  // 可以攻击
+	}
+
+	return false;  // 未达到攻击间隔，不能攻击
+}
+
+void Champion::playMeleeAttackAnimation()
+{
+	auto meleeAttackAnimation = Animation::create();
+	meleeAttackAnimation->setDelayPerUnit(0.15f); // 每帧间隔0.15秒
+
+	// 添加逐帧动画帧
+	meleeAttackAnimation->addSpriteFrameWithFile("attack1.png");
+	meleeAttackAnimation->addSpriteFrameWithFile("attack2.png");
+	meleeAttackAnimation->addSpriteFrameWithFile("attack3.png");
+	meleeAttackAnimation->addSpriteFrameWithFile("attack4.png");
+
+	// 创建动作
+	auto meleeAttackAction = Animate::create(meleeAttackAnimation);
+
+	// 运行动作
+	this->runAction(meleeAttackAction);
+}
+
+void Champion::playRangedAttackAnimation(const Vec2& attackerPos, const Vec2& targetPos)
+{
+	// 创建法球精灵
+	auto projectile = Sprite::create("attack5.png");
+	this->getParent()->addChild(projectile); // 将法球添加到与角色同一层次的父节点
+
+	// 设置法球初始位置
+	projectile->setPosition(attackerPos);
+
+	// 计算飞行时间
+	float distance = attackerPos.distance(targetPos);
+	float duration = 0.5f;
+
+	// 创建飞行动作
+	auto moveAction = MoveTo::create(duration, targetPos);
+
+	// 创建完成后移除法球的动作
+	auto removeAction = RemoveSelf::create();
+
+	// 创建动作序列
+	auto projectileAction = Sequence::create(moveAction, removeAction, nullptr);
+
+	// 运行动作
+	projectile->runAction(projectileAction);
+}
+
+void Champion::playHitAnimation()
+{
+	// 创建受击动画
+	auto hitAction = Sequence::create(
+		// 变红效果
+		TintTo::create(0.25f, 255, 0, 0),  // 变红
+		DelayTime::create(0.25f),           // 保持红色状态0.25秒
+		TintTo::create(0.25f, 255, 255, 255),  // 恢复原色
+		nullptr
+	);
+
+	// 播放动画
+	this->runAction(hitAction);
+}
 class Annie1 :public Champion 
 {
 public:
