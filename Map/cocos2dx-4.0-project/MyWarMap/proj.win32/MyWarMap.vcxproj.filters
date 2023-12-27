@@ -13,6 +13,12 @@
     <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\ShopScene.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\AutoBattle.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\Champions.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
     <ClCompile Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\main.cpp">
       <Filter>Source Files\proj.win32</Filter>
     </ClCompile>
@@ -31,6 +37,12 @@
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\ShopScene.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\AutoBattle.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Classes\Champions.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\proj.win32\main.h">
@@ -180,17 +192,44 @@
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\CloseSelected.png">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\CloseitemNormal.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\CloseitemSelected.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\DoubleNormal.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\DoubleSelected.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\FightStart.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\HelloWorld.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\LeftMove.png">
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\Maps\WarMap.png">
       <Filter>Resources\Maps</Filter>
     </ClInclude>
-    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\Maps\WarMap.tmx">
-      <Filter>Resources\Maps</Filter>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\RightMove.png">
+      <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\Maps\WarMap.tsx">
-      <Filter>Resources\Maps</Filter>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\SingleNormal.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\SingleSelected.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\StartNormal.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\StartSelected.png">
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\Store\shop.png">
       <Filter>Resources\Store</Filter>
@@ -201,11 +240,38 @@
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\Store\store.png">
       <Filter>Resources\Store</Filter>
     </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\attack1.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\attack2.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\attack3.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\attack4.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\attack5.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\background.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\bar.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\choicebackground.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\fonts\Marker Felt.ttf">
       <Filter>Resources\fonts</Filter>
     </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\fonts\arial.ttf">
       <Filter>Resources\fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\health.png">
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\hero1.png">
       <Filter>Resources</Filter>
@@ -213,8 +279,29 @@
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\hero2.png">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\mana.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\menumusic.mp3">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\myWarMap.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\progressbar.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\res\.gitkeep">
       <Filter>Resources\res</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\shop.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\shopped.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\smallHero.png">
+      <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\storeHeros\01.png">
       <Filter>Resources\storeHeros</Filter>

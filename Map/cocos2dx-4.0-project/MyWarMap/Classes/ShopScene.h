@@ -33,7 +33,7 @@ public:
     CREATE_FUNC(ShopScene);
 
     int playercost[15] = { 1,1,1,2,2,2,3,3,3,4,4,4,5,5,5 };
-    int coin = 10000;
+    int coin = 10;
 
     std:: vector<int> storeDisplay;//商店有五个商品，放五个角色的序号
 

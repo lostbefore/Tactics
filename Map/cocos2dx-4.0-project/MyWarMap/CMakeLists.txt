@@ -60,12 +60,16 @@ list(APPEND GAME_SOURCE
      Classes/HelloWorldScene.cpp
      Classes/WarMap.cpp
      Classes/ShopScene.cpp
+     Classes/AutoBattle.cpp
+     Classes/Champions.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/HelloWorldScene.h
      Classes/WarMap.h
      Classes/ShopScene.h
+     Classes/AutoBattle.h
+     Classes/Champions.h
      )
 
 if(ANDROID)

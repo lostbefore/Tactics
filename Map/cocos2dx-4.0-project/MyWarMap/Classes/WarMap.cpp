@@ -1,33 +1,50 @@
 #include "WarMap.h"
 #include "ShopScene.h"
+#include"AutoBattle.h"
+#include"math.h"
 USING_NS_CC;
-
+//进入每一轮的时间
+#define ROUNDTIME 10.0f
+//失败方损失生命值
+#define DAMAGE 10
+//己方战斗区域所有英雄编号
+int fightHerosMap[6][3] = { 0 };
+//敌方战斗区域所有英雄编号
+int enemyHerosMap[6][3] = { 0 };
+extern int NumOfPlayer;
+extern bool IsSingle;
+extern int win;
+//小小英雄移动速度
+const float smallHeroSpeed = 256;
+//创建地图场景
 Scene* WarMap::createWarMap()
 {
     return WarMap::create();
 }
-
-
+//错误抛出
 static void problemLoading(const char* filename)
 {
     printf("Error while loading: %s\n", filename);
     printf("Depending on how you compiled you might have to add 'Resources/' in front of filenames in HelloWorldScene.cpp\n");
 }
-
-
+//地图场景初始化
 bool WarMap::init()
 {
-
+    //地图是否完成初始化
     if (!Scene::init())
     {
         return false;
     }
-
+    //初始战斗区域英雄数量为0
     fightHeronums = 0;
-
+    //游戏屏幕大小
     auto visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
+    //创建小小英雄
+    smallHero = Sprite::create("littlehero.png");
+    smallHero->setPosition(Vec2(32, 32));
+    this->addChild(smallHero, 3);
+    //容器初始化
     preHero = Sprite::create("001.png");
     for (int i = 0; i < 6; i++) {
         preHerosMap.pushBack(preHero);
@@ -35,48 +52,87 @@ bool WarMap::init()
     for (int i = 0; i < 18; i++) {
         fightHeros.pushBack(preHero);
     }
-  
+    //点击监听器的创建
     auto myWarMaplistener = EventListenerTouchOneByOne::create();
     myWarMaplistener->onTouchBegan = CC_CALLBACK_2(WarMap::onTouchBegan, this);
     myWarMaplistener->onTouchMoved = CC_CALLBACK_2(WarMap::onTouchMoved, this);
     myWarMaplistener->onTouchEnded = CC_CALLBACK_2(WarMap::onTouchEnded, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(myWarMaplistener, this);
-
-
+    //地图创建
     Sprite* WarMapSprite = Sprite::create("myWarMap.png");
     WarMapSprite->setPosition(Vec2(512, 384));
     this->addChild(WarMapSprite, 0);
-
-
-
+    //商店按钮的创建
     auto shopbuttom = MenuItemImage::create(
         "shop.png",
         "shopped.png",
         CC_CALLBACK_1(WarMap::gotoshop, this));
+    shopbuttom->setPosition(Vec2(32, 416));
+    //调整点击类型
+    auto changLabel = MenuItemImage::create("shop.png", "shopped.png", CC_CALLBACK_1(WarMap::changLabel, this));
+    changLabel->setPosition(Vec2(15 * 64 + 32, 32+64*4));
 
-    if (shopbuttom == nullptr ||
-        shopbuttom->getContentSize().width <= 0 ||
-        shopbuttom->getContentSize().height <= 0)
-    {
-        problemLoading("'shop.png' and 'shopped.png'");
-    }
-    else
-    {       
-        shopbuttom->setPosition(Vec2(32,416));
-    }
-    auto aaa = Menu::create(shopbuttom, NULL);
+    auto aaa = Menu::create(shopbuttom,changLabel, NULL);
     aaa->setPosition(Vec2::ZERO);
     this->addChild(aaa, 1);
-    
+    //跳转至战斗界面
+    this->schedule(CC_SCHEDULE_SELECTOR(WarMap::IntoBattle), ROUNDTIME, kRepeatForever, 0);
+  
     return true;
 }
 
+void WarMap::IntoBattle(float dt)
+{
+    CCLOG("Scheduled function called every 10 second");
+    /*
+    测试
+    AIenemy(round, fightHerosMap);
+    AIenemy(round, enemyHerosMap);
+    */
+    smallHero->setPosition(Vec2(32, 32));
+    if (IsSingle)
+        AIenemy(round, enemyHerosMap);
+    else {
+        //在此实现联机传输数据，双方的Health，map和myFirst（一方为1一方为0）；
+    }
+    Scene* BattleScene = AutoBattle::createAutoBattle();
+    cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, BattleScene, Color3B(0, 255, 255)));;;
+    if (win == 1)
+        enemyHealth -= DAMAGE;
+    else if (win == -1)
+        myHealth -= DAMAGE;
+    if (myHealth <= 0 || enemyHealth <= 0) {
+        //游戏结束，可增加动画（胜利/失败）
+        scheduleOnce([=](float dt) {
+            Director::getInstance()->popScene();
+            }, 2.0f, "exit_key");
+    }
+    round++;
+    //回合结束 对商店和资源进行刷新
+
+}
+//点击开始函数的实现
 bool WarMap::onTouchBegan(Touch* touch, Event* event) {
+    //获得点击的位置
     Vec2 touchPosition = touch->getLocation();
+    //预战斗区域第几号
     int i = 0;
+    //点击区域的种类
     touchchose = 0;
-  
+    //当点击类型为2时，为移动小小英雄
+    if (changAction == 2) {
+        Vec2 smallHeroPosition = smallHero->getPosition();
+        float length = (touchPosition.x - smallHeroPosition.x) * (touchPosition.x - smallHeroPosition.x) +
+                       (touchPosition.y - smallHeroPosition.y) * (touchPosition.y - smallHeroPosition.y);
+        float time = (pow(length, 0.5)) / smallHeroSpeed;
+        MoveTo* moveto = MoveTo::create(time, touchPosition);
+        Sequence* seq = Sequence::create(moveto, NULL);
+        smallHero->runAction(seq);
+        return false;
+    }
+    //否则为在场上创建英雄单位、移动英雄单位站位
     if (touchPosition.x > 3 * 64 && touchPosition.x < 13 * 64 && touchPosition.y>8 * 64 && touchPosition.y < 11 * 64) {
+        //判断预战斗区域位置，如果位置满，则购买无效
         for (i = 0; i < 6; i++) {
             if (preFightHerosMap[i] == 0) {
                 break;
@@ -85,7 +141,7 @@ bool WarMap::onTouchBegan(Touch* touch, Event* event) {
         if (i == 6) {
             return false;
         }
-        
+        //点击位置为商店区域，在预战斗区域创建点击的英雄，扣除对应的钱的数量
         if (touchPosition.x > 3 * 64 && touchPosition.x < 5 * 64 && touchPosition.y>8 * 64 && touchPosition.y < 11 * 64) {
             if (shopScene->judgeCanBought[0] == 0 || shopScene->storeDisplay[0] <= 0) {
                 return false;
@@ -169,6 +225,7 @@ bool WarMap::onTouchBegan(Touch* touch, Event* event) {
 
         return false;
     }
+    //如果点击区域为预战斗区域，如果点击区域有英雄，则可进行下一步操作，否则结束
     else if (touchPosition.x > 320 && touchPosition.x < 704 && touchPosition.y>128 && touchPosition.y < 182) {
         preFightHerosMap_X = touchPosition.x / 64 - 5;
         if (preFightHerosMap[preFightHerosMap_X] != 0) {
@@ -179,6 +236,7 @@ bool WarMap::onTouchBegan(Touch* touch, Event* event) {
         }
         touchchose = 1;
     }
+    //如果点击区域为战斗区域，如果点击位置存在英雄，则可进行下一步操作，否则结束
     else if (touchPosition.x > 5 * 64 && touchPosition.x < 11 * 64 && touchPosition.y>3 * 64 && touchPosition.y < 6 * 64) {
         fightHerosMap_X = touchPosition.x / 64;
         fightHerosMap_y = touchPosition.y / 64;
@@ -196,7 +254,7 @@ bool WarMap::onTouchBegan(Touch* touch, Event* event) {
     }
     return true;
 }
-
+//在选择到英雄后，对其进行拖动
 void WarMap::onTouchMoved(Touch* touch, Event* event) {
     if (touchchose != 0) {
         Vec2 vec2 = touch->getDelta();
@@ -208,7 +266,7 @@ void WarMap::onTouchMoved(Touch* touch, Event* event) {
     }
     return;
 }
-
+//将英雄拖动后，对拖动后的位置进行判断，如果位置合法，则将英雄置于该位置，否则返回原位置
 void WarMap::onTouchEnded(Touch* touch, Event* event) {
     Vec2 vec2 = preHero->getPosition();
     int x = vec2.x / 64;
@@ -280,6 +338,7 @@ void WarMap::gotoshop(Ref* pSender) {
     }
 }
 
+//根据编号创建对应的英雄
 Sprite* WarMap::createHero(int gits) {
     Sprite* heros;
     if (gits == 1) {
@@ -422,7 +481,7 @@ Sprite* WarMap::createHero(int gits) {
     }
     return heros;
 }
-
+//英雄升星，在每次购买英雄后会进行依次判断，如果某种英雄数量达到3，则自动进行合成操作
 void WarMap::UpGrade() {
     int j=0;
     for (int i = 0; i < 30; i++) {
@@ -453,5 +512,14 @@ void WarMap::UpGrade() {
             allHerosNums[i] = 0;
             allHerosNums[i + 15]++;
         }
+    }
+}
+//改变点击类型
+void WarMap::changLabel(Ref* pSender) {
+    if (changAction == 1) {
+        changAction = 2;
+    }
+    else {
+        changAction = 1;
     }
 }
