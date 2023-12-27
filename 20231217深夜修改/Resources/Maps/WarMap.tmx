@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="16" height="12" tilewidth="64" tileheight="64" infinite="0" nextlayerid="5" nextobjectid="22">
+ <tileset firstgid="1" source="WarMap.tsx"/>
+ <layer id="1" name="图块层 1" width="16" height="12">
+  <data encoding="base64" compression="zlib">
+   eJzTY2Bg0EPCciRiPTS2JBBL4cDSROhXBGIuHFgZSa08Hv1KOLAyDvuRMTH6DfCEB6n2o/uHFP1qZNivj6Ye3S/E2q+Ax//ExB82DPKPJhBr4cDaaGFFDQwAE8gXyw==
+  </data>
+ </layer>
+</map>
