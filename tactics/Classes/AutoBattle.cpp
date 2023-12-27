@@ -11,6 +11,7 @@ USING_NS_CC;
 extern int fightHerosMap[6][3];//己方数据
 extern int enemyHerosMap[6][3];//敌方数据
 int win = -1;//0为己方失败，1为己方胜利
+bool myFirst = 0;
 //调用方法：
 //Scene* BattleScene = AutoBattle::createAutoBattle();
 //cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, BattleScene, Color3B(0, 255, 255)));
@@ -61,12 +62,12 @@ bool AutoBattle::init()
     win = -1;
 
     //---------------------------------测试
-
-    //for (int i = 0; i < 6; i++)
-  //      for (int j = 0; j < 3; j++)
-   //         fightHerosMap[i][j] = enemyHerosMap[i][j] = 0;
-   // AIenemy(3, fightHerosMap);
-   // AIenemy(3, enemyHerosMap);
+    /*
+    for (int i = 0; i < 6; i++)
+        for (int j = 0; j < 3; j++)
+            fightHerosMap[i][j] = enemyHerosMap[i][j] = 0;
+    AIenemy(3, fightHerosMap);
+    AIenemy(3, enemyHerosMap);*/
     //---------------------------------
 
     for (int i = 0; i < 6; i++) {
@@ -137,29 +138,33 @@ float DistanceCalc(Vec2 a, Vec2 b) {
 void AutoBattle::update(float dt) {
     if (win != -1) {
         unscheduleUpdate();
+        //本场战斗结束，胜利/失败
         scheduleOnce([=](float dt) {
             Director::getInstance()->popScene();
             }, 2.0f, "exit_key");
         return;
     }
-    Attack(myList, enemyList);
-    if (enemyList.empty()) {
-        win = 1;
-        return;
+    if (myFirst==1) {
+        Attack(myList, enemyList);
+        if (enemyList.empty()) {
+            win = 1;
+            return;
+        }
     }
-    if (myList.empty()) {
-        win = 0;
-        return;
-    }
+    
     Attack(enemyList, myList);
-    if (enemyList.empty()) {
-        win = 1;
-        return;
-    }
     if (myList.empty()) {
         win = 0;
         return;
     }
+    if (myFirst==0) {
+        Attack(myList, enemyList);
+        if (enemyList.empty()) {
+            win = 1;
+            return;
+        }
+    }
+
 }
 void AutoBattle::Attack(list<Champion*>& myList, list<Champion*>& enemyList) {
 
@@ -180,6 +185,7 @@ void AutoBattle::Attack(list<Champion*>& myList, list<Champion*>& enemyList) {
                 aimIt = enemyIt;
             }
         }
+        
         enemyPos = (*aimIt)->getPosition();
         if (nowDis <= ATTACK_DIS||myHero->AttackDistance==0) {
             if (myHero->canAttack()) {
@@ -201,7 +207,9 @@ void AutoBattle::Attack(list<Champion*>& myList, list<Champion*>& enemyList) {
                 next.y = 3.0;
             else
                 next.y = -3.0;
-            myHero->setPosition(next + myPos);
+            auto t = next + myPos;
+            if (t.x >= 5 * 64 + 32 && t.x <= 10 * 64 + 32 && t.y >= 3 * 64 + 32 && t.y <= 8 * 64 + 32);
+                myHero->setPosition(t);
         }
     }
 }

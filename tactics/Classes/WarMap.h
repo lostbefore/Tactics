@@ -12,12 +12,14 @@ public:
     static cocos2d::Scene* createWarMap();
     
     virtual bool init();
-
+    int myHealth = 100;
+    int enemyHealth = 100;
     bool onTouchBegan(Touch* touch, Event* event);
     void onTouchMoved(Touch* touch, Event* event);
     void onTouchEnded(Touch* touch, Event* event);
     Sprite* createHero(int gits);
-    void UpGrade();
+    void UpGrade(); 
+    void IntoBattle(float dt);
 
     void gotoshop(cocos2d::Ref* pSender);
 
@@ -28,7 +30,7 @@ public:
 private:
 
     int fightHerosMap_X;
-
+    int round=1;
     int fightHerosMap_y;
     int preFightHerosMap[6] = { 0 };
     int preFightHerosMap_X;

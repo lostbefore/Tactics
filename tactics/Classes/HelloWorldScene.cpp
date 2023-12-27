@@ -29,6 +29,8 @@
 using namespace cocos2d;
 using namespace cocos2d::ui;
 USING_NS_CC;
+int NumOfPlayer = 2;
+bool IsSingle;
 Scene* HelloWorld::createScene()
 {
     return HelloWorld::create();
@@ -146,11 +148,12 @@ public:
     {
         AudioEngine::stopAll();//Í£Ö¹²¥·ÅÒôÀÖ
         // ÇÐ»»µ½µ¥ÈËÓÎÏ·³¡¾°
+        IsSingle = 1;
         auto singlegameScene = WarMap::createWarMap();
-        cocos2d::Director::getInstance()->replaceScene(TransitionFade::create(0.5, singlegameScene, Color3B(0, 255, 255)));
-
-       // Scene* BattleScene = AutoBattle::createAutoBattle();
+        cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, singlegameScene, Color3B(0, 255, 255)));
+        //Scene* BattleScene = AutoBattle::createAutoBattle();
         //cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, BattleScene, Color3B(0, 255, 255)));
+        
         
         //
         // ¹Ø±ÕÓÎÏ·
@@ -159,11 +162,12 @@ public:
     void doubleGameCallback(cocos2d::Ref* sender)
     {
         AudioEngine::stopAll();//Í£Ö¹²¥·ÅÒôÀÖ
+        IsSingle = 0;
+        auto singlegameScene = WarMap::createWarMap();
+        cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, singlegameScene, Color3B(0, 255, 255)));
         // ÇÐ»»µ½Ë«ÈËÓÎÏ·³¡¾°
-        //auto doublegameScene = DoubleScene::create();
-        //cocos2d::Director::getInstance()->replaceScene(TransitionFade::create(0.5, doublegameScene, Color3B(0, 255, 255)));
         // ¹Ø±ÕÓÎÏ·
-        cocos2d::Director::getInstance()->end();
+        //cocos2d::Director::getInstance()->end();
     }
     CREATE_FUNC(GameScene);
 };

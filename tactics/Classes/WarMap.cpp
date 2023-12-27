@@ -2,11 +2,13 @@
 #include "ShopScene.h"
 #include"AutoBattle.h"
 USING_NS_CC;
-
+#define ROUNDTIME 10.0f
+#define DAMAGE 10
 int fightHerosMap[6][3] = { 0 };
-
 int enemyHerosMap[6][3] = { 0 };
-
+extern int NumOfPlayer;
+extern bool IsSingle;
+extern int win;
 Scene* WarMap::createWarMap()
 {
     return WarMap::create();
@@ -22,7 +24,8 @@ static void problemLoading(const char* filename)
 
 bool WarMap::init()
 {
-
+    //增添round=当前回合数，可进行显示
+    //增添myhealth和enemyhealth，可进行显示
     if (!Scene::init())
     {
         return false;
@@ -72,12 +75,38 @@ bool WarMap::init()
     auto aaa = Menu::create(shopbuttom, NULL);
     aaa->setPosition(Vec2::ZERO);
     this->addChild(aaa, 1);
-    //Sleep(1000);
-    //auto BattleScene = AutoBattle::createAutoBattle();
-    //cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, BattleScene, Color3B(0, 255, 255)));
+    this->schedule(CC_SCHEDULE_SELECTOR(WarMap::IntoBattle), ROUNDTIME, kRepeatForever, 0);
     return true;
 }
+void WarMap::IntoBattle(float dt)
+{
+    CCLOG("Scheduled function called every 10 second");
+    /*
+    测试
+    AIenemy(round, fightHerosMap);
+    AIenemy(round, enemyHerosMap);
+    */
+    if (IsSingle)
+        AIenemy(round, enemyHerosMap);
+    else {
+        //在此实现联机传输数据，双方的Health，map和myFirst（一方为1一方为0）；
+    }
+    Scene* BattleScene = AutoBattle::createAutoBattle();
+    cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, BattleScene, Color3B(0, 255, 255)));;;
+    if (win == 1)
+        enemyHealth -= DAMAGE;
+    else if (win == -1)
+        myHealth -= DAMAGE;
+    if (myHealth <= 0 || enemyHealth <= 0) {
+        //游戏结束，可增加动画（胜利/失败）
+        scheduleOnce([=](float dt) {
+            Director::getInstance()->popScene();
+            }, 2.0f, "exit_key");
+    }
+    round++;
+    //回合结束 对商店和资源进行刷新
 
+}
 bool WarMap::onTouchBegan(Touch* touch, Event* event) {
     Vec2 touchPosition = touch->getLocation();
     int i = 0;

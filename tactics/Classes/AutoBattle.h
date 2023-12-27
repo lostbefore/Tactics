@@ -19,5 +19,15 @@ private:
     list<Champion*> myList, enemyList;
 };
 void AIenemy(int level,int enemyHerosMap[6][3]);//up to 15
+/*
+class Player{
+public:
+    int Health=100;
+    int Map[6][3] = { 0 };
+}
+
+*/
+
+
 #endif // __HELLOWORLD_SCENE_H__#pragma oncence
 
