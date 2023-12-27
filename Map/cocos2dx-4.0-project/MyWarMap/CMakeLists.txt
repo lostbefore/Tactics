@@ -62,6 +62,7 @@ list(APPEND GAME_SOURCE
      Classes/ShopScene.cpp
      Classes/AutoBattle.cpp
      Classes/Champions.cpp
+     
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
@@ -70,6 +71,7 @@ list(APPEND GAME_HEADER
      Classes/ShopScene.h
      Classes/AutoBattle.h
      Classes/Champions.h
+     
      )
 
 if(ANDROID)

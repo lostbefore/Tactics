@@ -1,6 +1,14 @@
+/*Windows：
+打开命令提示符（CMD）。
+输入 ipconfig 并按回车。
+查找 IPv4 地址，这就是你的计算机在局域网中的 IP 地址。*/
+#include"../tcpSocket/tcpSocket.h"
+#include<iostream>
 #include "WarMap.h"
 #include "ShopScene.h"
 #include"AutoBattle.h"
+#include<string>
+#include <sstream>
 #include"math.h"
 USING_NS_CC;
 //进入每一轮的时间
@@ -52,6 +60,11 @@ bool WarMap::init()
     for (int i = 0; i < 18; i++) {
         fightHeros.pushBack(preHero);
     }
+    //创建删除英雄的地区
+    Sprite* deletePlace = Sprite::create("deleteHero.png");
+    deletePlace->setPosition(Vec2(64 * 15 + 32, 32));
+    this->addChild(deletePlace, 2);
+
     //点击监听器的创建
     auto myWarMaplistener = EventListenerTouchOneByOne::create();
     myWarMaplistener->onTouchBegan = CC_CALLBACK_2(WarMap::onTouchBegan, this);
@@ -109,6 +122,25 @@ void WarMap::IntoBattle(float dt)
     }
     round++;
     //回合结束 对商店和资源进行刷新
+    // 
+    // 如果商店场景可见，清除之前的内容
+    if (shopScene->isVisible()) {
+        shopScene->removeAllChildren();
+    }
+
+    // 切换商店场景的可见性
+    shopScene->setVisible(!shopScene->isVisible());
+
+    // 如果商店场景可见，调用商店场景的显示物品方法
+    if (shopScene->isVisible()) {
+        shopScene->displayItems();
+    }
+    shopScene->coin = shopScene->coin + 5;
+    shopScene->playerSprites.clear();
+    shopScene->storeDisplay.clear();
+    shopScene->storePicture.clear();
+    // 清除所有界面
+    shopScene->randomCreate();
 
 }
 //点击开始函数的实现
@@ -146,12 +178,12 @@ bool WarMap::onTouchBegan(Touch* touch, Event* event) {
             if (shopScene->judgeCanBought[0] == 0 || shopScene->storeDisplay[0] <= 0) {
                 return false;
             }
-
+            //在预战斗区域创建英雄
             preHero = createHero(shopScene->storeDisplay[0]);
             preFightHerosMap[i] = shopScene->storeDisplay[0];
             preHerosMap.replace(i, preHero);
             allHerosNums[shopScene->storeDisplay[0] - 1]++;
-
+            //扣除对应的金币
             shopScene->coin = shopScene->coin - shopScene->playercost[shopScene->storeDisplay[0] - 1];
             shopScene->storeDisplay[0] = -1;
             shopScene->deletePlayer(0);
@@ -216,11 +248,10 @@ bool WarMap::onTouchBegan(Touch* touch, Event* event) {
         else {
             return false;
         }
-
-        
+        //将英雄放置在预战斗区的位置上
         preHero->setPosition(Vec2(5 * 64 + 64 * i + 32, 160));
         this->addChild(preHero, 2);
-
+        //将英雄升星
         UpGrade();
 
         return false;
@@ -271,6 +302,19 @@ void WarMap::onTouchEnded(Touch* touch, Event* event) {
     Vec2 vec2 = preHero->getPosition();
     int x = vec2.x / 64;
     int y = vec2.y / 64;
+    if (x == 15 && y == 0) {
+        if (touchchose == 1) {
+            preFightHerosMap[preFightHerosMap_X] = 0;
+            preHero->removeFromParent();
+
+        }
+        else if (touchchose == 2) {
+            fightHerosMap[fightHerosMap_X - 5][fightHerosMap_y - 3] = 0;
+            preHero->removeFromParent();
+
+        }
+        return;
+    }
     if (touchchose == 1) {
         if (y > 2 && y < 6 && x>4 && x < 11) {
             if (fightHerosMap[x - 5][y - 3] == 0&&fightHeronums<18) {
@@ -307,8 +351,6 @@ void WarMap::onTouchEnded(Touch* touch, Event* event) {
         preHero->setPosition(Vec2(64 * fightHerosMap_X + 32, 64 * fightHerosMap_y + 32));
     }
     
-
-
 
 }
 

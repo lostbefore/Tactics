@@ -264,6 +264,9 @@
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\choicebackground.png">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\deleteHero.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\fonts\Marker Felt.ttf">
       <Filter>Resources\fonts</Filter>
     </ClInclude>
@@ -279,6 +282,12 @@
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\hero2.png">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\littlehero.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\loadingbackground.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\mana.png">
       <Filter>Resources</Filter>
     </ClInclude>
@@ -289,6 +298,12 @@
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\progressbar.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\refresh.png">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\refreshed.png">
       <Filter>Resources</Filter>
     </ClInclude>
     <ClInclude Include="D:\cocos2d-x4.0\cocos2d-x-4.0\cocos2d-x-4.0\cocos2dx-4.0-project\MyWarMap\Resources\res\.gitkeep">

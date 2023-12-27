@@ -22,7 +22,7 @@ private:
 
     int start = 0;//尚未开始进入新的一轮，start=0
 
-    Vector<Sprite*> playerSprites;
+    
 
 
 
@@ -31,7 +31,7 @@ private:
 public:
     virtual bool init();
     CREATE_FUNC(ShopScene);
-
+    Vector<Sprite*> playerSprites;
     int playercost[15] = { 1,1,1,2,2,2,3,3,3,4,4,4,5,5,5 };
     int coin = 10;
 

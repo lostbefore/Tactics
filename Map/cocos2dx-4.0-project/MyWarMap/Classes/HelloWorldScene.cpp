@@ -158,15 +158,24 @@ public:
             return false;
         }
         // 添加标签
+        // 获取屏幕的可见大小
+        auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
+        // 添加背景精灵
+        auto background = cocos2d::Sprite::create("loadingbackground.png");
+        background->setPosition(visibleSize / 2);  // 设置位置为屏幕中心
+        background->setContentSize(visibleSize);   // 设置大小为屏幕大小
+        this->addChild(background);//加入至当前场景中
         auto label = Label::createWithSystemFont("Warning:Please pay attention to you time spent on the game!", "Arial", 32);
         label->enableShadow();
-        label->setPosition(Vec2(500, 500));
+        label->setPosition(Vec2(500, 300));
+        label->setColor(Color3B(135, 206, 250));
         // 添加标签进入场景
         this->addChild(label);
         // 创建 LoadingBar
         loadingBar = LoadingBar::create("progressbar.png");
-        loadingBar->setPosition(Vec2(512, 384));//设置进度条位置在屏幕中央
-        loadingBar->setScale(0.7f);//设置进度条尺寸
+        loadingBar->setPosition(Vec2(512, 100));//设置进度条位置在屏幕中央
+        loadingBar->setScaleX(1.0f);
+        loadingBar->setScaleY(0.3f);//设置进度条尺寸
         loadingBar->setDirection(LoadingBar::Direction::LEFT);//设置进度条加载方向
         loadingBar->setPercent(0);//开始时进度条加载进度为0
         this->addChild(loadingBar);

@@ -29,4 +29,4 @@ public:
 */
 
 
-#endif // __HELLOWORLD_SCENE_H__#pragma oncence#pragma once
+#endif // __HELLOWORLD_SCENE_H__#pragma oncence
