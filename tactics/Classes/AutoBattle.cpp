@@ -7,7 +7,9 @@
 USING_NS_CC;
 #define HERO_MAX 10
 #define ATTACK_DIS 1.414*64
+#define FARATTACK_DIS 1.414*3*64
 #define MAX_DISTANCE 1e9
+#define SPEED 3.0f
 extern int fightHerosMap[6][3];//己方数据
 extern int enemyHerosMap[6][3];//敌方数据
 int win = -1;//0为己方失败，1为己方胜利
@@ -97,9 +99,10 @@ bool AutoBattle::init()
         }
             
     }
-   
     
-    this->scheduleUpdate();
+    scheduleOnce([=](float dt) {
+        this->scheduleUpdate();
+        }, 2.0f, "exit_key");
     
     return true;
 }
@@ -113,7 +116,7 @@ void AIenemy(int level,int enemyHerosMap[6][3]) {//随机生成敌人
     for (int i = 0; i < level * 3 && i < HERO_MAX; i++) {
         int j;
         do
-            j = rand() % (level * 3);
+            j = rand() % (level * 3)+1;
         while (NumOfHero[j] == 2);
         NumOfHero[j]++;
         if (r == 3 && l == 3) {
@@ -175,7 +178,8 @@ void AutoBattle::Attack(list<Champion*>& myList, list<Champion*>& enemyList) {
         Champion* myHero = *myIt;
         auto aimIt = enemyList.end();
         float minDis = MAX_DISTANCE, nowDis = MAX_DISTANCE;
-        Vec2 myPos, enemyPos;
+        Vec2 myPos;
+        Vec2 enemyPos;
         myPos = myHero->getPosition();
         for (auto enemyIt = enemyList.begin(); enemyIt != enemyList.end(); enemyIt++) {
             enemyPos = (*enemyIt)->getPosition();
@@ -185,9 +189,9 @@ void AutoBattle::Attack(list<Champion*>& myList, list<Champion*>& enemyList) {
                 aimIt = enemyIt;
             }
         }
+        const Vec2 aimPos = (*aimIt)->getPosition();
         
-        enemyPos = (*aimIt)->getPosition();
-        if (nowDis <= ATTACK_DIS||myHero->AttackDistance==0) {
+        if (nowDis <= ATTACK_DIS||myHero->AttackDistance==0&&nowDis<=FARATTACK_DIS) {
             if (myHero->canAttack()) {
                 (*aimIt)->GetDamage(myHero->AttackDamage());
                 myHero->playMeleeAttackAnimation();
@@ -199,17 +203,12 @@ void AutoBattle::Attack(list<Champion*>& myList, list<Champion*>& enemyList) {
         }
         else {
             Vec2 next = (enemyPos - myPos) / 2;
-            if (next.x > 0)
-                next.x = 3.0;
-            else
-                next.x = -3.0;
-            if (next.y > 0)
-                next.y = 3.0;
-            else
-                next.y = -3.0;
-            auto t = next + myPos;
-            if (t.x >= 5 * 64 + 32 && t.x <= 10 * 64 + 32 && t.y >= 3 * 64 + 32 && t.y <= 8 * 64 + 32);
+            next.normalize();
+            auto t = next*SPEED + myPos;
+            if (!(t.x >= 5 * 64 + 32 && t.x <= 10 * 64 + 32 && t.y >= 3 * 64 + 32 && t.y <= 8 * 64 + 32))
+                exit(-1);
                 myHero->setPosition(t);
+            myPos = myHero->getPosition();
         }
     }
 }
