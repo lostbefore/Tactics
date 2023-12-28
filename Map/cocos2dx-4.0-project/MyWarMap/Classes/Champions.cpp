@@ -1,7 +1,19 @@
 #include"Champions.h"
 #include<iostream>
 USING_NS_CC;
+void Champion::GetDamage(int atk)
+{
+	int dmg = 0;
+	atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
+	currentHealth = currentHealth - dmg;
+	float HealthScale = currentHealth / Health;
+	HealthBar->setScaleX(HealthScale);
+}
 
+bool Champion::Death()
+{
+	return(currentHealth <= 0);
+}
 
 Vec2  Champion::getPosition()
 {
@@ -14,6 +26,8 @@ void Champion::removeChild(Scene* scene)
 	scene->removeChild(Bar2);
 	scene->removeChild(ManaBar);
 	scene->removeChild(HealthBar);
+	scene->removeChild(actionAnimation);
+
 }
 void  Champion::run(Action* action)
 {
@@ -27,6 +41,8 @@ void  Champion::run(Action* action)
 	HealthBar->runAction(clonedAction);
 	clonedAction = action->clone();
 	ChampionHero->runAction(clonedAction);
+	clonedAction = action->clone();
+	actionAnimation->runAction(clonedAction);
 
 }
 void Champion::stop() {
@@ -35,14 +51,19 @@ void Champion::stop() {
 	_actionManager->removeAllActionsFromTarget(Bar2);
 	_actionManager->removeAllActionsFromTarget(ManaBar);
 	_actionManager->removeAllActionsFromTarget(HealthBar);
+	_actionManager->removeAllActionsFromTarget(actionAnimation);
 }
 void Champion::setPosition(Vec2 vec2)
 {
+	HealthBar->setAnchorPoint(Vec2(0, 0));
+	ManaBar->setAnchorPoint(Vec2(0, 0));
 	ChampionHero->setPosition(vec2);
-	Bar1->setPosition(Vec2(vec2.x, vec2.y + 1));
-	Bar2->setPosition(Vec2(vec2.x, vec2.y + 3));
-	ManaBar->setPosition(Vec2(vec2.x, vec2.y + 1));
-	HealthBar->setPosition(Vec2(vec2.x, vec2.y + 3));
+	Bar1->setPosition(Vec2(vec2.x, vec2.y + 33));
+	Bar2->setPosition(Vec2(vec2.x, vec2.y + 35));
+	ManaBar->setPosition(Vec2(vec2.x - 32, vec2.y + 32));
+	HealthBar->setPosition(Vec2(vec2.x - 32, vec2.y + 34));
+	actionAnimation->setPosition(vec2);
+
 }
 Champion::~Champion()
 {
@@ -68,35 +89,50 @@ bool Champion::canAttack()
 	return false;  // 未达到攻击间隔，不能攻击
 }
 
-void Champion::playMeleeAttackAnimation()
+void Champion::playMeleeAttackAnimation(Scene* scene)
 {
-	auto meleeAttackAnimation = Animation::create();
-	meleeAttackAnimation->setDelayPerUnit(0.15f); // 每帧间隔0.15秒
+	// 获取当前对象的位置
+	auto actionAnime = Sprite::create();
+	Vec2 vec2 = ChampionHero->getPosition();
+	actionAnime->setPosition(vec2);
+	scene->addChild(actionAnime, 4);
 
-	// 添加逐帧动画帧
+	// 创建动画
+	auto meleeAttackAnimation = Animation::create();
+	meleeAttackAnimation->setDelayPerUnit(0.15f);
+
 	meleeAttackAnimation->addSpriteFrameWithFile("attack1.png");
 	meleeAttackAnimation->addSpriteFrameWithFile("attack2.png");
 	meleeAttackAnimation->addSpriteFrameWithFile("attack3.png");
 	meleeAttackAnimation->addSpriteFrameWithFile("attack4.png");
 
-	// 创建动作
 	auto meleeAttackAction = Animate::create(meleeAttackAnimation);
+	auto removeAction = RemoveSelf::create();
 
-	// 运行动作
-	this->runAction(meleeAttackAction);
+
+
+	// 运行动画和删除精灵的动作序列
+	int audioId = cocos2d::AudioEngine::play2d("near.wav");
+
+	actionAnime->runAction(Sequence::create(meleeAttackAction, removeAction, nullptr));
+
+
 }
 
-void Champion::playRangedAttackAnimation(const Vec2& attackerPos, const Vec2& targetPos)
+
+
+
+
+void Champion::playRangedAttackAnimation(Scene* scene, const Vec2& targetPos)
 {
 	// 创建法球精灵
 	auto projectile = Sprite::create("attack5.png");
-	this->getParent()->addChild(projectile); // 将法球添加到与角色同一层次的父节点
-
-	// 设置法球初始位置
-	projectile->setPosition(attackerPos);
+	Vec2 vec2 = ChampionHero->getPosition();
+	projectile->setPosition(vec2);
+	scene->addChild(projectile, 4);
 
 	// 计算飞行时间
-	float distance = attackerPos.distance(targetPos);
+	float distance = vec2.distance(targetPos);
 	float duration = 0.5f;
 
 	// 创建飞行动作
@@ -107,12 +143,12 @@ void Champion::playRangedAttackAnimation(const Vec2& attackerPos, const Vec2& ta
 
 	// 创建动作序列
 	auto projectileAction = Sequence::create(moveAction, removeAction, nullptr);
-
+	int audioId = cocos2d::AudioEngine::play2d("far.wav");
 	// 运行动作
 	projectile->runAction(projectileAction);
 }
 
-void Champion::playHitAnimation()
+void Champion::playHitAnimation()//调用受击动画时，要用aimIt->ChampionHero->playHitAnimation()才行（之前不行就是函数设计和调用不一致）
 {
 	// 创建受击动画
 	auto hitAction = Sequence::create(
@@ -144,7 +180,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -158,43 +194,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("001.png");
@@ -212,6 +218,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 
 		return Annie1::create();
@@ -237,7 +246,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -250,42 +259,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("002.png");
@@ -303,7 +283,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Garen1::create();
 	}
@@ -326,7 +308,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -340,42 +322,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("003.png");
@@ -393,7 +346,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Yasuo1::create();
 	}
@@ -416,7 +371,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -430,42 +385,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("004.png");
@@ -483,7 +409,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Jinx1::create();
 	}
@@ -506,7 +434,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -520,42 +448,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("005.png");
@@ -573,7 +472,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Gwen1::create();
 	}
@@ -596,7 +497,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -609,42 +510,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("006.png");
@@ -662,7 +534,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Neeko1::create();
 	}
@@ -685,7 +559,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -699,42 +573,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("007.png");
@@ -752,7 +597,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Zeri1::create();
 	}
@@ -775,7 +622,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -789,42 +636,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("008.png");
@@ -842,7 +660,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Fiora1::create();
 	}
@@ -865,7 +685,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -878,42 +698,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("009.png");
@@ -931,7 +722,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Morde1::create();
 	}
@@ -953,7 +746,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -971,39 +764,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("010.png");
@@ -1021,7 +787,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Akali1::create();
 	}
@@ -1057,34 +825,7 @@ public:
 		ManaBar->setScaleX(ManaScale);
 		return currentAttack;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("011.png");
@@ -1102,7 +843,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Thresh1::create();
 	}
@@ -1125,7 +868,7 @@ public:
 	int AttackDamage()
 	{
 
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -1140,39 +883,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("012.png");
@@ -1190,7 +906,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Viego1::create();
 	}
@@ -1212,7 +930,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack()) {
+		if (1) {
 			if (Mana >= MAX_MANA)
 			{
 				Mana = 0;
@@ -1224,39 +942,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("013.png");
@@ -1274,7 +965,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Aatrox1::create();
 	}
@@ -1296,7 +989,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -1309,39 +1002,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();
+			;
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("014.png");
@@ -1359,7 +1025,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Zoe1::create();
 	}
@@ -1381,7 +1049,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -1398,39 +1066,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("015.png");
@@ -1448,7 +1089,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Panth1::create();
 	}
@@ -1471,7 +1114,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -1485,42 +1128,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("016.png");
@@ -1538,7 +1152,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Annie2::create();
 	}
@@ -1561,7 +1177,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -1574,42 +1190,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("017.png");
@@ -1627,7 +1214,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Garen2::create();
 	}
@@ -1650,7 +1239,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -1664,42 +1253,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("018.png");
@@ -1717,7 +1277,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Yasuo2::create();
 	}
@@ -1740,7 +1302,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -1754,42 +1316,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("019.png");
@@ -1807,7 +1340,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Jinx2::create();
 	}
@@ -1830,7 +1365,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -1844,42 +1379,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("020.png");
@@ -1897,7 +1403,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Gwen2::create();
 	}
@@ -1920,7 +1428,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -1933,42 +1441,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("021.png");
@@ -1986,7 +1465,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Neeko2::create();
 	}
@@ -2009,7 +1490,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2023,42 +1504,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("022.png");
@@ -2076,7 +1528,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Zeri2::create();
 	}
@@ -2099,7 +1553,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2113,42 +1567,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("023.png");
@@ -2166,7 +1591,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Fiora2::create();
 	}
@@ -2189,7 +1616,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2202,42 +1629,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("024.png");
@@ -2255,7 +1653,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Morde2::create();
 	}
@@ -2277,7 +1677,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2295,39 +1695,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("025.png");
@@ -2345,7 +1718,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Akali2::create();
 	}
@@ -2367,7 +1742,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2381,39 +1756,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("026.png");
@@ -2431,7 +1779,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Thresh2::create();
 	}
@@ -2453,7 +1803,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2468,39 +1818,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("027.png");
@@ -2518,7 +1841,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Viego2::create();
 	}
@@ -2540,7 +1865,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2553,39 +1878,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("028.png");
@@ -2603,7 +1901,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Aatrox2::create();
 	}
@@ -2625,7 +1925,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2638,39 +1938,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("029.png");
@@ -2688,7 +1961,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Zoe2::create();
 	}
@@ -2710,7 +1985,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2727,39 +2002,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("030.png");
@@ -2777,7 +2025,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Panth2::create();
 	}
@@ -2800,7 +2050,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2814,42 +2064,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("031.png");
@@ -2867,7 +2088,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Annie3::create();
 	}
@@ -2890,7 +2113,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2903,42 +2126,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("032.png");
@@ -2956,7 +2150,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Garen3::create();
 	}
@@ -2979,7 +2175,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -2993,42 +2189,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("033.png");
@@ -3046,7 +2213,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Yasuo3::create();
 	}
@@ -3069,7 +2238,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -3083,42 +2252,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("034.png");
@@ -3136,7 +2276,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Jinx3::create();
 	}
@@ -3159,7 +2301,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -3173,42 +2315,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("035.png");
@@ -3226,7 +2339,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Gwen3::create();
 	}
@@ -3249,7 +2364,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -3262,42 +2377,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("036.png");
@@ -3315,7 +2401,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Neeko3::create();
 	}
@@ -3338,7 +2426,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -3352,42 +2440,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("037.png");
@@ -3405,7 +2464,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Zeri3::create();
 	}
@@ -3428,7 +2489,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -3442,42 +2503,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("038.png");
@@ -3495,7 +2527,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Fiora3::create();
 	}
@@ -3518,7 +2552,7 @@ public:
 
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -3531,42 +2565,13 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
 
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
 
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
-
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("039.png");
@@ -3584,7 +2589,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Morde3::create();
 	}
@@ -3606,7 +2613,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -3624,39 +2631,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("040.png");
@@ -3675,7 +2655,9 @@ public:
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
 
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 		return Akali3::create();
 	}
 };
@@ -3696,7 +2678,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -3710,39 +2692,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("041.png");
@@ -3760,7 +2715,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Thresh3::create();
 	}
@@ -3782,7 +2739,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -3797,39 +2754,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("042.png");
@@ -3847,7 +2777,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Viego3::create();
 	}
@@ -3869,7 +2801,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -3882,39 +2814,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("043.png");
@@ -3932,7 +2837,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Aatrox3::create();
 	}
@@ -3954,7 +2861,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -3967,39 +2874,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("044.png");
@@ -4017,7 +2897,9 @@ public:
 		scene->addChild(Bar2, 2);
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 
 		return Zoe3::create();
 	}
@@ -4039,7 +2921,7 @@ public:
 	}
 	int AttackDamage()
 	{
-		if (canAttack())
+		if (1)
 		{
 			if (Mana >= MAX_MANA)
 			{
@@ -4056,39 +2938,12 @@ public:
 			}
 			float ManaScale = Mana / MAX_MANA;
 			ManaBar->setScaleX(ManaScale);
-			startAttackTimer();  // 开始攻击计时器
+			;  // 开始攻击计时器
 			return currentAttack;
 		}
 		return 0;
 	}
-	void GetDamage(int atk)
-	{
-		int dmg = 0;
-		atk - currentDefense >= 1 ? dmg = atk - currentDefense : dmg = 1;
-		currentHealth = currentHealth - dmg;
-		float HealthScale = currentHealth / Health;
-		ManaBar->setScaleX(HealthScale);
-	}
-	bool Death()
-	{
-		return(currentHealth <= 0);
-	}
-	void TurnStart()
-	{
-		currentHealth = Health;
-		currentAttack = Attack;
-		currentDefense = Defense;
-		Mana = 0;
-	}
-	int getHealth()
-	{
-		return currentHealth;
-	}
 
-	int getMana()
-	{
-		return Mana;
-	}
 	auto create1(Scene* scene, int x, int y)
 	{
 		ChampionHero = Sprite::create("045.png");
@@ -4107,7 +2962,9 @@ public:
 		scene->addChild(HealthBar, 3);
 		scene->addChild(ManaBar, 3);
 
-
+		actionAnimation = Sprite::create();
+		actionAnimation->setPosition(Vec2(64 * (x + 5) + 32, 64 * (y + 3) + 32));
+		scene->addChild(actionAnimation, 4);
 		return Panth3::create();
 	}
 };
@@ -4394,5 +3251,5 @@ Champion* switchCreate(int ChampionID, Scene* scene, int x, int y)
 		break;
 
 	}
-
+	return NULL;
 }

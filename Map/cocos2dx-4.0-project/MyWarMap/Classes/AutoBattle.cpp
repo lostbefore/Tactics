@@ -194,7 +194,7 @@ void AutoBattle::Attack(list<Champion*>& myList, list<Champion*>& enemyList) {
         if (nowDis <= ATTACK_DIS || myHero->AttackDistance == 0 && nowDis <= FARATTACK_DIS) {
             if (myHero->canAttack()) {
                 (*aimIt)->GetDamage(myHero->AttackDamage());
-                myHero->playMeleeAttackAnimation();
+                myHero->playMeleeAttackAnimation(this);
                 if ((*aimIt)->Death()) {
                     (*aimIt)->removeChild(this);
                     enemyList.erase(aimIt);

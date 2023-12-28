@@ -8,6 +8,7 @@ using namespace cocos2d::ui;
 USING_NS_CC;
 int NumOfPlayer = 2;
 bool IsSingle;
+int backgroundMusicID;
 Scene* HelloWorld::createScene()
 {
     return HelloWorld::create();
@@ -82,14 +83,23 @@ bool HelloWorld::init()
     else
     {
         AudioEngine::preload("menumusic.mp3", nullptr);//预加载
+        AudioEngine::preload("far.wav", nullptr);//预加载
+        AudioEngine::preload("near.wav", nullptr);//预加载
         // add the sprite as a child to this layer
         this->addChild(sprite, 0);
     }
     return true;
 }
-class DoubleScene : public cocos2d::Scene
-{};
 class GameScene : public cocos2d::Scene
+{
+public:
+    virtual bool init();
+    void SettingCallback(cocos2d::Ref* sender);
+    void singleGameCallback(cocos2d::Ref* sender);
+    void doubleGameCallback(cocos2d::Ref* sender);
+    CREATE_FUNC(GameScene);
+};
+class Settingcode : public cocos2d::Scene//设置类
 {
 public:
     virtual bool init() override
@@ -98,56 +108,111 @@ public:
         {
             return false;
         }
-        auto director = cocos2d::Director::getInstance();
         // 获取屏幕的可见大小
-        auto visibleSize = director->getVisibleSize();
+        auto visibleSize = cocos2d::Director::getInstance()->getVisibleSize();
         // 添加背景精灵
-        auto gamebackground = cocos2d::Sprite::create("choicebackground.png");
-        gamebackground->setPosition(visibleSize / 2);  // 设置位置为屏幕中心
-        gamebackground->setContentSize(visibleSize);   // 设置大小为屏幕大小
-        this->addChild(gamebackground);
-        // 创建单人游戏菜单项
-        auto singleItem = cocos2d::MenuItemImage::create("SingleNormal.png", "SingleSelected.png",
-            CC_CALLBACK_1(GameScene::singleGameCallback, this));
-        singleItem->setScale(0.7f);
-        singleItem->setPosition(Vec2(-200, -150));
-        // 创建联机游戏菜单项
-        auto doubleItem = cocos2d::MenuItemImage::create("DoubleNormal.png", "DoubleSelected.png",
-            CC_CALLBACK_1(GameScene::doubleGameCallback, this));
-        doubleItem->setScale(0.7f);
-        doubleItem->setPosition(Vec2(200, -150));
+        auto background = cocos2d::Sprite::create("Settingground.png");
+        background->setPosition(visibleSize / 2);  // 设置位置为屏幕中心
+        background->setContentSize(visibleSize);   // 设置大小为屏幕大小
+        this->addChild(background);//加入至当前场景中
+        // 创建停止播放音乐菜单项
+        auto musicItem = cocos2d::MenuItemImage::create("MusicNormal.png", "MusicSelected.png",
+            CC_CALLBACK_1(Settingcode::MusicCallback, this));
+        musicItem->setScale(0.5f);//设置菜单尺寸
+        // 创建离开设置菜单项
+        auto leaveItem = cocos2d::MenuItemImage::create("LeaveNormal.png", "LeaveSelected.png",
+            CC_CALLBACK_1(Settingcode::LeaveSettingsCallback, this));
+        leaveItem->setScale(0.5f);//设置菜单尺寸
+        // 创建退出游戏菜单项
+        auto closeItem = cocos2d::MenuItemImage::create("CloseSettingNormal.png", "CloseSettingSelected.png",
+            CC_CALLBACK_1(Settingcode::menuCloseCallback, this));
+        closeItem->setScale(0.5f);//设置菜单尺寸
         // 创建菜单
-        auto menu = cocos2d::Menu::create(singleItem, doubleItem, nullptr);
-        this->addChild(menu);
+        auto menu = cocos2d::Menu::create(musicItem, leaveItem, closeItem, nullptr);
+        menu->alignItemsVertically(); // 垂直排列菜单项
+        this->addChild(menu);//将菜单加入至场景中
         return true;
     }
-    void singleGameCallback(cocos2d::Ref* sender)
+    // 停止播放音乐的回调函数
+    void MusicCallback(cocos2d::Ref* sender)
     {
-        AudioEngine::stopAll();//停止播放音乐
-        // 切换到单人游戏场景
-        IsSingle = 1;
-        auto singlegameScene = WarMap::createWarMap();
-        cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, singlegameScene, Color3B(0, 255, 255)));
-        //Scene* BattleScene = AutoBattle::createAutoBattle();
-        //cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, BattleScene, Color3B(0, 255, 255)));
+        AudioEngine::AudioState state = AudioEngine::getState(backgroundMusicID);
+        if (state == AudioEngine::AudioState::PLAYING)
+            //停止音乐播放
+            AudioEngine::AudioEngine::pause(backgroundMusicID);
+        else
+            AudioEngine::resume(backgroundMusicID);
 
-
-        //
-        // 关闭游戏
-        //cocos2d::Director::getInstance()->end();
     }
-    void doubleGameCallback(cocos2d::Ref* sender)
+    // 退出设置的回调函数
+    void LeaveSettingsCallback(cocos2d::Ref* sender)
     {
-        AudioEngine::stopAll();//停止播放音乐
-        IsSingle = 0;
-        auto singlegameScene = WarMap::createWarMap();
-        cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, singlegameScene, Color3B(0, 255, 255)));
-        // 切换到双人游戏场景
-        // 关闭游戏
-        //cocos2d::Director::getInstance()->end();
+        auto gameScene = GameScene::create();
+        cocos2d::Director::getInstance()->replaceScene(TransitionFade::create(0.5, gameScene, Color3B(0, 255, 255)));
     }
-    CREATE_FUNC(GameScene);
+    // 退出菜单的回调函数
+    void menuCloseCallback(cocos2d::Ref* sender)
+    {
+        // 关闭游戏
+        cocos2d::Director::getInstance()->end();
+        AudioEngine::stopAll();//停止音乐播放
+    }
+    CREATE_FUNC(Settingcode);
 };
+bool GameScene::init()
+{
+    if (!Scene::init())
+    {
+        return false;
+    }
+    auto director = cocos2d::Director::getInstance();
+    // 获取屏幕的可见大小
+    auto visibleSize = director->getVisibleSize();
+    // 添加背景精灵
+    auto gamebackground = cocos2d::Sprite::create("choicebackground.png");
+    gamebackground->setPosition(visibleSize / 2);  // 设置位置为屏幕中心
+    gamebackground->setContentSize(visibleSize);   // 设置大小为屏幕大小
+    this->addChild(gamebackground);
+    // 创建单人游戏菜单项
+    auto singleItem = cocos2d::MenuItemImage::create("SingleNormal.png", "SingleSelected.png",
+        CC_CALLBACK_1(GameScene::singleGameCallback, this));
+    singleItem->setScale(0.7f);
+    singleItem->setPosition(Vec2(-200, -150));
+    // 创建联机游戏菜单项
+    auto doubleItem = cocos2d::MenuItemImage::create("DoubleNormal.png", "DoubleSelected.png",
+        CC_CALLBACK_1(GameScene::doubleGameCallback, this));
+    doubleItem->setScale(0.7f);
+    doubleItem->setPosition(Vec2(200, -150));
+    // 创建进入菜单菜单项
+    auto settingItem = cocos2d::MenuItemImage::create("SettingNormal.png", "SettingSelected.png",
+        CC_CALLBACK_1(GameScene::SettingCallback, this));
+    settingItem->setScale(0.5f);
+    settingItem->setPosition(Vec2(440, -320));
+    // 创建菜单
+    auto menu = cocos2d::Menu::create(singleItem, doubleItem, settingItem, nullptr);
+    this->addChild(menu);
+    return true;
+}
+void GameScene::SettingCallback(cocos2d::Ref* sender)
+{
+    auto settingScene = Settingcode::create();
+    cocos2d::Director::getInstance()->replaceScene(TransitionFade::create(0.5, settingScene, Color3B(0, 255, 255)));
+}
+void GameScene::singleGameCallback(cocos2d::Ref* sender)
+{
+    AudioEngine::stopAll();//停止播放音乐
+    // 切换到单人游戏场景
+    IsSingle = 1;
+    auto singlegameScene = WarMap::createWarMap();
+    cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, singlegameScene, Color3B(0, 255, 255)));
+}
+void GameScene::doubleGameCallback(cocos2d::Ref* sender)
+{
+    AudioEngine::stopAll();//停止播放音乐
+    IsSingle = 0;
+    auto singlegameScene = WarMap::createWarMap();
+    cocos2d::Director::getInstance()->pushScene(TransitionFade::create(0.5, singlegameScene, Color3B(0, 255, 255)));
+}
 class LoadingScene : public cocos2d::Scene
 {
 public:
@@ -260,6 +325,6 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     //Close the cocos2d-x game scene and quit the application
     //Director::getInstance()->end();
     auto menuScene = MainMenuScene::create();//创建新场景
-    int backgroundMusicID = AudioEngine::play2d("menumusic.mp3", true);//播放音频
+    backgroundMusicID = AudioEngine::play2d("menumusic.mp3", true);//播放音频
     cocos2d::Director::getInstance()->replaceScene(TransitionFade::create(0.5, menuScene, Color3B(0, 255, 255)));//切换至新场景（主菜单）
 }
