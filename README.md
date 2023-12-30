@@ -89,4 +89,4 @@
     ### 类的设计及继承关系
 
     ---
- ![avatar] https://mjj.today/i/8nMTMK
+ ![background.png] https://mjj.today/i/8nMTMK
