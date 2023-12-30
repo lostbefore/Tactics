@@ -5,7 +5,8 @@
 ## 一、项目信息
 
 - 项目选题：**金铲铲大战（2D）**
-
+- 项目GitHub地址：https://github.com/tactics114514/Tactics
+- 
 ### 成员及贡献占比
 
 ---
