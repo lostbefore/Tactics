@@ -45,6 +45,16 @@ bool WarMap::init()
     {
         return false;
     }
+    //所有地区清零
+    for (int i = 0; i < 6; i++) {
+        preFightHerosMap[i] = 0;
+    }
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 3; j++) {
+            fightHerosMap[i][j] = 0;
+        }
+    }
+
     //初始战斗区域英雄数量为0
     fightHeronums = 0;
     //游戏屏幕大小
@@ -209,22 +219,22 @@ void WarMap::IntoBattle(float dt)
     schedule(CC_SCHEDULE_SELECTOR(WarMap::updateCountdown), 1.0f, countdownSeconds, 0);
     
     //回合结束 对商店和资源进行刷新
-    if (shopScene) {
+    if (shopScene) 
+    {
         // 如果商店场景可见，清除之前的内容
-        if (shopScene->isVisible()) {
+        if (shopScene->isVisible()) 
+        {
             shopScene->removeAllChildren();
             // 切换商店场景的可见性
             shopScene->setVisible(!shopScene->isVisible());
         }
-
+        shopScene->coin = shopScene->coin + 5;
+        shopScene->playerSprites.clear();
+        shopScene->storeDisplay.clear();
+        shopScene->storePicture.clear();
+        // 商店随机生成五个角色
+        shopScene->randomCreate();
     }
-    shopScene->coin = shopScene->coin + 5;
-    shopScene->playerSprites.clear();
-    shopScene->storeDisplay.clear();
-    shopScene->storePicture.clear();
-    // 商店随机生成五个角色
-    shopScene->randomCreate();
-
 }
 //点击开始函数的实现
 bool WarMap::onTouchBegan(Touch* touch, Event* event) {
@@ -444,8 +454,8 @@ void WarMap::gotoshop(Ref* pSender) {
         shopScene = ShopScene::create();
         shopScene->retain(); // 保留商店场景指针
         this->addChild(shopScene, INT_MAX); // INT_MAX 保证商店场景显示在顶端
-        shopScene->setVisible(true); // Set visibility to true when first created
-        shopScene->displayItems(); // Call displayItems when first created
+        shopScene->setVisible(true); 
+        shopScene->displayItems(); 
     }
     else {
         // 如果商店场景可见，清除之前的内容
