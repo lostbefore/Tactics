@@ -9,6 +9,7 @@
 - 选用引擎：**Cocos2d-x 4.0**
 - 辅助软件：Adobe Photoshop 2022
 - 支持平台：Windows
+- 可执行文件在Release文件夹中
 
 ### 成员及贡献占比
 
